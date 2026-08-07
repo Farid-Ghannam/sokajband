@@ -14,4 +14,4 @@ const firebaseConfig = {
 
 // App Check — reCAPTCHA v3 site key from Firebase console → App Check → your web app.
 // Paste your real key below. This key is safe to expose client-side (same as apiKey).
-const RECAPTCHA_V3_SITE_KEY = "PASTE_YOUR_RECAPTCHA_V3_SITE_KEY_HERE";
+const RECAPTCHA_V3_SITE_KEY = "6Ld9yHotAAAAALBjk8pzPP0B2I8SjMM2iQm3wEL7";
