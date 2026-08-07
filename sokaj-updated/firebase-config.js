@@ -11,3 +11,7 @@ const firebaseConfig = {
   appId: "1:319504646442:web:813e30f78a2e8e8defde53",
   measurementId: "G-P5QEJXSBDQ"
 };
+
+// App Check — reCAPTCHA v3 site key from Firebase console → App Check → your web app.
+// Paste your real key below. This key is safe to expose client-side (same as apiKey).
+const RECAPTCHA_V3_SITE_KEY = "PASTE_YOUR_RECAPTCHA_V3_SITE_KEY_HERE";

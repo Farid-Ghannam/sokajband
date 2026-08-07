@@ -2,6 +2,16 @@
   'use strict';
 
   firebase.initializeApp(firebaseConfig);
+
+  // App Check — proves this write is coming from the real site, not a script
+  // hitting Firestore directly. Runs invisibly, no user interaction needed.
+  // For local testing on localhost, Firebase auto-enables debug token support —
+  // check the browser console for a debug token to register in the Firebase
+  // console (App Check → manage debug tokens) the first time you test locally.
+  if (RECAPTCHA_V3_SITE_KEY && !RECAPTCHA_V3_SITE_KEY.startsWith('PASTE_')) {
+    firebase.appCheck().activate(RECAPTCHA_V3_SITE_KEY, true);
+  }
+
   const db = firebase.firestore();
 
   const form = document.getElementById('messageForm');
