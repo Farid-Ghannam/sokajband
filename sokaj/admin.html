@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sokaj — Messages (Admin)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--red:#e8161f;--bone:#f2ede2;--ash:#8a857c;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--black);color:var(--bone);font-family:'Archivo',sans-serif;min-height:100vh;padding:40px 20px;}
+  h1{font-family:'Anton',sans-serif;letter-spacing:.02em;margin-bottom:24px;}
+  .wrap{max-width:640px;margin:0 auto;}
+
+  /* login */
+  #loginBox{display:flex;flex-direction:column;gap:12px;max-width:320px;}
+  input{background:rgba(255,255,255,.05);border:1px solid rgba(242,237,226,.15);color:var(--bone);
+    padding:12px 14px;border-radius:2px;font-size:.9rem;}
+  input:focus{outline:none;border-color:var(--red);}
+  button{background:var(--red);color:var(--black);border:none;font-weight:700;
+    padding:12px 20px;border-radius:2px;cursor:pointer;font-size:.9rem;}
+  button:hover{background:var(--bone);}
+  #loginError{color:#ff6b6b;font-size:.85rem;min-height:1.2em;}
+
+  /* messages */
+  #appBox{display:none;}
+  .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  #signOut{background:transparent;border:1px solid rgba(242,237,226,.2);color:var(--ash);padding:8px 14px;font-size:.8rem;}
+  #signOut:hover{color:var(--bone);border-color:var(--bone);background:transparent;}
+  .msg-card{background:rgba(255,255,255,.03);border:1px solid rgba(242,237,226,.1);
+    border-left:3px solid var(--red-dim,#8f0f14);border-radius:2px;padding:18px 20px;margin-bottom:12px;}
+  .msg-card.unread{border-left-color:var(--red);}
+  .msg-card-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:10px;}
+  .msg-name{font-weight:700;}
+  .msg-time{color:var(--ash);font-size:.75rem;white-space:nowrap;}
+  .msg-body{white-space:pre-wrap;line-height:1.5;font-size:.92rem;margin-bottom:12px;}
+  .msg-actions{display:flex;gap:10px;}
+  .msg-actions button{background:transparent;border:1px solid rgba(242,237,226,.2);color:var(--ash);
+    padding:6px 12px;font-size:.75rem;}
+  .msg-actions button:hover{color:var(--bone);border-color:var(--bone);background:transparent;}
+  .msg-actions .del-btn:hover{color:#ff6b6b;border-color:#ff6b6b;}
+  #empty{color:var(--ash);font-size:.9rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SOKAJ — Messages</h1>
+
+  <div id="loginBox">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Sign in</button>
+    <p id="loginError"></p>
+  </div>
+
+  <div id="appBox">
+    <div class="top-row">
+      <span id="countLabel" style="color:var(--ash);font-size:.85rem;"></span>
+      <button id="signOut">Sign out</button>
+    </div>
+    <div id="messagesList"></div>
+    <p id="empty" style="display:none;">No messages yet.</p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

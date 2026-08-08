@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOKAJ — سوكاج</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lalezar&family=Cairo:wght@400;700;900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- backdrop layers for theme-song mood system -->
+<div class="bg-layer" id="bgA"></div>
+<div class="bg-layer" id="bgB"></div>
+<div class="bg-scrim"></div>
+<div class="bg-noise"></div>
+
+<!-- ===== NAV ===== -->
+<header class="site-nav" id="siteNav">
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a href="#top" class="nav-logo-link" aria-label="Sokaj home">
+    <img src="assets/logo.png" alt="Sokaj" class="nav-logo" id="navLogo">
+  </a>
+
+  <div class="theme-picker">
+    <button class="theme-toggle" id="themeToggle" aria-haspopup="listbox" aria-expanded="false">
+      <span class="theme-toggle-label">Pick a theme song</span>
+      <span class="theme-toggle-current" id="themeToggleCurrent">6L3 Brasi</span>
+      <svg class="theme-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+    </button>
+    <ul class="theme-menu" id="themeMenu" role="listbox">
+      <li role="option" data-song="6l3brasi"><span class="tm-swatch" style="background-image:url('assets/covers/6l3-brasi.jpg')"></span><span class="tm-text"><span class="tm-title">6L3 Brasi</span><span class="tm-sub">طلع براسي</span></span></li>
+      <li role="option" data-song="7asiseni"><span class="tm-swatch" style="background-image:url('assets/covers/7asis-eni.jpg')"></span><span class="tm-text"><span class="tm-title">7asis Eni</span><span class="tm-sub">حاسس إني</span></span></li>
+      <li role="option" data-song="meenhad"><span class="tm-swatch" style="background-image:url('assets/covers/meen-had.jpg')"></span><span class="tm-text"><span class="tm-title">Meen Had</span><span class="tm-sub">مين هاد</span></span></li>
+      <li role="option" data-song="alalamalahmar"><span class="tm-swatch" style="background-image:url('assets/covers/alalam-alahmar.jpg')"></span><span class="tm-text"><span class="tm-title">El 3alam El A7mar</span><span class="tm-sub">العلم الأحمر</span></span></li>
+    </ul>
+  </div>
+
+  <button class="mute-btn" id="muteBtn" aria-label="Unmute theme song" aria-pressed="false">
+    <svg class="icon-vol icon-vol-off" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 9V15H8L13 20V4L8 9H4Z" fill="currentColor"/><path d="M16 8L21 16M21 8L16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <svg class="icon-vol icon-vol-on" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 9V15H8L13 20V4L8 9H4Z" fill="currentColor"/><path d="M16.5 8.5C17.5 9.7 18 10.8 18 12C18 13.2 17.5 14.3 16.5 15.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 6C20.8 7.8 21.7 9.8 21.7 12C21.7 14.2 20.8 16.2 19 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/></svg>
+  </button>
+</header>
+
+<!-- ===== SLIDE MENU ===== -->
+<nav class="slide-menu" id="navMenu">
+  <button class="menu-close" id="menuClose" aria-label="Close menu">
+    <span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="#about" class="menu-link"><span class="ml-num">01</span>About</a></li>
+    <li><a href="#music" class="menu-link"><span class="ml-num">02</span>Music</a></li>
+    <li><a href="#gallery" class="menu-link"><span class="ml-num">03</span>Gallery</a></li>
+    <li><a href="#message" class="menu-link"><span class="ml-num">04</span>Message</a></li>
+    <li><a href="#social" class="menu-link"><span class="ml-num">05</span>Social</a></li>
+  </ul>
+  <div class="slide-menu-foot">
+    <span class="ar">سوكاج — عمّان</span>
+  </div>
+</nav>
+<div class="menu-scrim" id="menuScrim"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <img src="assets/logo.png" alt="Sokaj" class="hero-logo" id="heroLogo">
+  <p class="hero-tag">راجع الصوت<span class="hero-tag-en">TURN IT UP</span></p>
+  <button class="scroll-cue" id="scrollCue" aria-label="Scroll down">
+    <span></span>
+  </button>
+</section>
+
+<div class="jag jag-1" aria-hidden="true"></div>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>01 — عن الفرقة</div>
+  <div class="about-grid">
+    <h2 class="about-head">RAW.<br>LOUD.<br><span class="text-outline">STREET.</span></h2>
+    <div class="about-body">
+      <p>Sokaj started the way most things that matter start in Amman — loud, late, and out of a bedroom, not a studio. What came out was rough on purpose: distorted guitars, street Arabic, and lyrics that sound like they were overheard on a service taxi at 2am.</p>
+      <p>Four tracks in, the sound hasn't been sanded down. <span class="hl">6L3 Brasi</span> runs on gasoline and bad decisions. <span class="hl">7asis Eni</span> is a gas canister about to go off. <span class="hl">Meen Had</span> closes its jaws slow, like the flytrap on the cover. <span class="hl">El 3alam El A7mar</span> burns the whole thing down.</p>
+      <p class="edit-note">— edit this bio however you and the band want it to read —</p>
+    </div>
+  </div>
+</section>
+
+<div class="jag jag-2" aria-hidden="true"></div>
+
+<!-- ===== MUSIC ===== -->
+<section class="music" id="music">
+  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>02</div>
+  <h2 class="section-head">MUSIC <span class="section-head-ar">الموسيقى</span></h2>
+
+  <div class="track-list">
+
+    <article class="track" data-song="6l3brasi">
+      <div class="track-art"><img src="assets/covers/6l3-brasi.jpg" alt="6L3 Brasi cover art"></div>
+      <div class="track-info">
+        <span class="track-index">01</span>
+        <h3 class="track-title">6L3 Brasi <span class="track-title-ar">طلع براسي</span></h3>
+        <div class="track-actions">
+          <button class="play-theme-btn" data-song="6l3brasi">Play as theme song</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="track" data-song="7asiseni">
+      <div class="track-art"><img src="assets/covers/7asis-eni.jpg" alt="7asis Eni cover art"></div>
+      <div class="track-info">
+        <span class="track-index">02</span>
+        <h3 class="track-title">7asis Eni <span class="track-title-ar">حاسس إني</span></h3>
+        <div class="track-actions">
+          <button class="play-theme-btn" data-song="7asiseni">Play as theme song</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="track" data-song="meenhad">
+      <div class="track-art"><img src="assets/covers/meen-had.jpg" alt="Meen Had cover art"></div>
+      <div class="track-info">
+        <span class="track-index">03</span>
+        <h3 class="track-title">Meen Had <span class="track-title-ar">مين هاد</span></h3>
+        <div class="track-actions">
+          <button class="play-theme-btn" data-song="meenhad">Play as theme song</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="track" data-song="alalamalahmar">
+      <div class="track-art"><img src="assets/covers/alalam-alahmar.jpg" alt="El 3alam El A7mar cover art"></div>
+      <div class="track-info">
+        <span class="track-index">04</span>
+        <h3 class="track-title">El 3alam El A7mar <span class="track-title-ar">العلم الأحمر</span></h3>
+        <div class="track-actions">
+          <button class="play-theme-btn" data-song="alalamalahmar">Play as theme song</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="jag jag-1" aria-hidden="true"></div>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery" id="gallery">
+  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>03</div>
+  <h2 class="section-head">GALLERY <span class="section-head-ar">صور</span></h2>
+  <div class="concert-grid">
+    <a href="concert-2025-06-26.html" class="concert-card">
+      <img src="assets/covers/6l3-brasi.jpg" alt="" class="concert-card-bg">
+      <div class="concert-card-overlay">
+        <span class="concert-card-date">JUNE 26, 2025</span>
+        <span class="concert-card-label">View Photos →</span>
+      </div>
+    </a>
+    <a href="concert-2025-09-03.html" class="concert-card">
+      <img src="assets/covers/alalam-alahmar.jpg" alt="" class="concert-card-bg">
+      <div class="concert-card-overlay">
+        <span class="concert-card-date">SEPTEMBER 3, 2025</span>
+        <span class="concert-card-label">View Photos →</span>
+      </div>
+    </a>
+  </div>
+  <p class="edit-note center">— swap the placeholder cover images for real concert photos, and drop the actual photo sets into each concert page —</p>
+</section>
+
+<div class="jag jag-2" aria-hidden="true"></div>
+
+<!-- ===== MESSAGE ===== -->
+<section class="message" id="message">
+  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>04</div>
+  <h2 class="section-head">DROP A MESSAGE <span class="section-head-ar">اترك رسالة</span></h2>
+  <p class="message-sub">Send Sokaj something — only the band sees it.</p>
+
+  <form class="message-form" id="messageForm">
+    <input type="text" id="msgName" class="msg-input" placeholder="Your name" maxlength="60" required>
+    <textarea id="msgText" class="msg-input msg-textarea" placeholder="Your message..." maxlength="1000" rows="5" required></textarea>
+    <!-- honeypot: real users never see or fill this. bots that auto-fill every field will get caught. -->
+    <input type="text" id="msgWebsite" name="website" class="msg-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="msg-submit" id="msgSubmit">Send</button>
+    <p class="msg-status" id="msgStatus" aria-live="polite"></p>
+  </form>
+</section>
+
+<div class="jag jag-1" aria-hidden="true"></div>
+
+<!-- ===== SOCIAL ===== -->
+<section class="social" id="social">
+  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>05</div>
+  <h2 class="section-head">FOLLOW <span class="section-head-ar">تابعونا</span></h2>
+  <div class="social-grid">
+    <a href="https://www.instagram.com/sokajband/" class="social-link" target="_blank" rel="noopener">
+      <span class="social-name">Instagram</span><span class="social-handle">@sokajband</span>
+    </a>
+    <a href="https://open.spotify.com/artist/2fde0ZXHMnbC58zJ09ulee?si=zpotVxHUR3iXukxQq9nRjw" class="social-link" target="_blank" rel="noopener">
+      <span class="social-name">Spotify</span><span class="social-handle">Listen</span>
+    </a>
+    <a href="https://youtube.com/@sokajband?si=pBi7SnQ5PyYfPfBk" class="social-link" target="_blank" rel="noopener">
+      <span class="social-name">YouTube</span><span class="social-handle">Watch</span>
+    </a>
+    <a href="https://www.tiktok.com/@sokajband?_r=1&_t=ZT-98gXWx6yPnh" class="social-link" target="_blank" rel="noopener">
+      <span class="social-name">TikTok</span><span class="social-handle">@sokajband</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <img src="assets/logo.png" alt="Sokaj" class="footer-logo">
+  <p class="footer-text">صنع بالحب لسوكاج — fan site, not official</p>
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+</footer>
+
+<audio id="themeAudio" preload="none" loop></audio>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+<script src="message.js"></script>
+</body>
+</html>
