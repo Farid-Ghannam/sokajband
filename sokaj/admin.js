@@ -2,6 +2,15 @@
   'use strict';
 
   firebase.initializeApp(firebaseConfig);
+
+  // App Check — proves this request is coming from the real admin page,
+  // not a script hitting Firestore directly. Required since App Check
+  // enforcement is turned on for Cloud Firestore in the Firebase console —
+  // without this, every request (including logged-in reads) gets rejected.
+  if (RECAPTCHA_V3_SITE_KEY && !RECAPTCHA_V3_SITE_KEY.startsWith('PASTE_')) {
+    firebase.appCheck().activate(RECAPTCHA_V3_SITE_KEY, true);
+  }
+
   const auth = firebase.auth();
   const db = firebase.firestore();
 
