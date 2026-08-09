@@ -149,6 +149,10 @@ button{font-family:inherit;cursor:pointer;}
   filter:grayscale(.15);
   clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px);
 }
+li[data-song="6l3brasi"] .tm-swatch{background-image:url('assets/covers/6l3-brasi.jpg');}
+li[data-song="7asiseni"] .tm-swatch{background-image:url('assets/covers/7asis-eni.jpg');}
+li[data-song="meenhad"] .tm-swatch{background-image:url('assets/covers/meen-had.jpg');}
+li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/alalam-alahmar.jpg');}
 .tm-text{display:flex;flex-direction:column;line-height:1.25;}
 .tm-title{font-size:.82rem;font-weight:700;}
 .tm-sub{font-family:var(--f-arabic);font-size:.72rem;color:var(--ash);}
