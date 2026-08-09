@@ -240,6 +240,7 @@ li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/ala
   animation:heroLogoRise 1.1s cubic-bezier(.16,.9,.3,1) .15s forwards;
 }
 .hero-tag{
+  margin:0;
   font-family:var(--f-arabic);font-weight:900;
   font-size:clamp(.85rem,2vw,1.15rem);
   color:var(--bone);
