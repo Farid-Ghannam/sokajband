@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOKAJ — September 3, 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .concert-page{max-width:1100px;margin:0 auto;padding:100px 24px 80px;}
+  .concert-back{
+    display:inline-flex;align-items:center;gap:10px;color:var(--bone);
+    font-family:var(--f-body);font-size:1rem;font-weight:600;text-decoration:none;margin-bottom:32px;
+    padding:12px 22px;border:1px solid rgba(242,237,226,.2);border-radius:2px;
+    transition:color .2s ease,border-color .2s ease,background .2s ease;
+  }
+  .concert-back:hover{color:var(--red);border-color:var(--red);background:rgba(232,22,31,.08);}
+  .concert-title{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.2rem);color:var(--bone);margin-bottom:8px;}
+  .concert-date{font-family:var(--f-body);color:var(--red);font-size:.95rem;font-weight:600;letter-spacing:.03em;margin-bottom:36px;}
+  .concert-photo-grid{
+    column-count:3;column-gap:10px;
+  }
+  @media(max-width:640px){.concert-photo-grid{column-count:2;}}
+  .concert-photo-placeholder{
+    break-inside:avoid;margin-bottom:10px;
+    background:rgba(255,255,255,.03);border:1px dashed rgba(242,237,226,.15);
+    overflow:hidden;
+  }
+  .concert-photo-placeholder img{
+    display:block;width:100%;height:auto;
+  }
+  .concert-empty-note{color:var(--ash);font-family:var(--f-body);font-size:.9rem;margin-top:20px;}
+</style>
+<link rel="stylesheet" href="lightbox.css">
+</head>
+<body>
+
+<div class="bg-scrim" style="position:fixed;inset:0;background:var(--black);z-index:-1;"></div>
+
+<main class="concert-page">
+  <a href="index.html#gallery" class="concert-back">← Back to Gallery</a>
+  <h1 class="concert-title">Live</h1>
+  <p class="concert-date">SEPTEMBER 3, 2025</p>
+
+  <div class="concert-photo-grid" id="photoGrid">
+        <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo01.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo02.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo03.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo04.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo05.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo06.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo07.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo08.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo09.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo10.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo100.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo101.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo102.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo103.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo104.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo105.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo106.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo107.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo108.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo109.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo11.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo110.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo111.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo112.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo113.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo114.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo115.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo116.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo117.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo118.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo119.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo12.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo120.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo121.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo122.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo123.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo124.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo125.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo126.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo127.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo128.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo129.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo13.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo130.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo131.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo132.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo133.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo134.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo135.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo14.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo15.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo16.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo17.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo18.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo19.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo20.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo21.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo22.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo23.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo24.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo25.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo26.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo27.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo28.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo29.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo30.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo31.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo32.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo33.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo34.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo35.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo36.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo37.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo38.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo39.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo40.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo41.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo42.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo43.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo44.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo45.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo46.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo47.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo48.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo49.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo50.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo51.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo52.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo53.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo54.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo55.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo56.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo57.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo58.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo59.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo60.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo61.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo62.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo63.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo64.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo65.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo66.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo67.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo68.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo69.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo70.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo71.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo72.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo73.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo74.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo75.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo76.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo77.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo78.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo79.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo80.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo81.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo82.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo83.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo84.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo85.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo86.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo87.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo88.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo89.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo90.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo91.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo92.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo93.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo94.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo95.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo96.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo97.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo98.jpg" alt=""></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo99.jpg" alt=""></div>
+  </div>
+</main>
+
+<script src="lightbox.js"></script>
+</body>
+</html>
