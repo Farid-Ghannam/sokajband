@@ -99,6 +99,8 @@
     setBackground(SONGS[key].cover);
     setPlayingUI(key);
 
+    try { localStorage.setItem('sokajThemeSong', key); } catch (e) {}
+
     audioEl.src = SONGS[key].audio;
     audioEl.muted = !userHasInteracted;
     syncMuteUI();
@@ -154,7 +156,35 @@
   });
 
   /* ---- boot: load default song muted (autoplay-safe) -------------- */
-  selectSong(DEFAULT_SONG, { attemptPlay: true });
+  let bootSong = DEFAULT_SONG;
+  try {
+    const saved = localStorage.getItem('sokajThemeSong');
+    if (saved && SONGS[saved]) bootSong = saved;
+  } catch (e) {}
+  selectSong(bootSong, { attemptPlay: true });
   muteBtn.setAttribute('aria-pressed', 'false');
 
+})();
+
+/* ---- about section language toggle -------------------------------- */
+(() => {
+  const btn = document.getElementById('aboutLangToggle');
+  const en = document.getElementById('aboutTextEn');
+  const ar = document.getElementById('aboutTextAr');
+  if (!btn || !en || !ar) return;
+
+  btn.addEventListener('click', () => {
+    const showingEn = btn.dataset.lang === 'en';
+    if (showingEn) {
+      en.hidden = true;
+      ar.hidden = false;
+      btn.dataset.lang = 'ar';
+      btn.textContent = 'English';
+    } else {
+      en.hidden = false;
+      ar.hidden = true;
+      btn.dataset.lang = 'en';
+      btn.textContent = 'عربي';
+    }
+  });
 })();

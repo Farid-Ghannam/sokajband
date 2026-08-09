@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lalezar&family=Cairo:wght@400;700;900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -56,19 +56,18 @@
     <li><a href="#about" class="menu-link"><span class="ml-num">01</span>About</a></li>
     <li><a href="#music" class="menu-link"><span class="ml-num">02</span>Music</a></li>
     <li><a href="#gallery" class="menu-link"><span class="ml-num">03</span>Gallery</a></li>
-    <li><a href="#message" class="menu-link"><span class="ml-num">04</span>Message</a></li>
-    <li><a href="#social" class="menu-link"><span class="ml-num">05</span>Social</a></li>
+    <li><a href="#members" class="menu-link"><span class="ml-num">04</span>Band</a></li>
+    <li><a href="#message" class="menu-link"><span class="ml-num">05</span>Message</a></li>
+    <li><a href="#social" class="menu-link"><span class="ml-num">06</span>Social</a></li>
+    <li><a href="about-me.html" class="menu-link"><span class="ml-num">07</span>Credits</a></li>
   </ul>
-  <div class="slide-menu-foot">
-    <span class="ar">سوكاج — عمّان</span>
-  </div>
 </nav>
 <div class="menu-scrim" id="menuScrim"></div>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <img src="assets/logo.png" alt="Sokaj" class="hero-logo" id="heroLogo">
-  <p class="hero-tag">راجع الصوت<span class="hero-tag-en">TURN IT UP</span></p>
+  <p class="hero-tag">Fan website made by <a href="https://www.instagram.com/saayuiii/" target="_blank" rel="noopener">saayuiii</a></p>
   <button class="scroll-cue" id="scrollCue" aria-label="Scroll down">
     <span></span>
   </button>
@@ -78,13 +77,19 @@
 
 <!-- ===== ABOUT ===== -->
 <section class="about" id="about">
-  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>01 — عن الفرقة</div>
+  <h2 class="section-head">SOKAJ <span class="section-head-ar">سوكاج</span></h2>
   <div class="about-grid">
-    <h2 class="about-head">RAW.<br>LOUD.<br><span class="text-outline">STREET.</span></h2>
+    <h2 class="about-head"><span class="about-head-line-ar text-outline">حقيقي</span><br><span class="about-head-fr">authentique</span><br><span class="text-outline">زي ما هو</span></h2>
     <div class="about-body">
-      <p>Sokaj started the way most things that matter start in Amman — loud, late, and out of a bedroom, not a studio. What came out was rough on purpose: distorted guitars, street Arabic, and lyrics that sound like they were overheard on a service taxi at 2am.</p>
-      <p>Four tracks in, the sound hasn't been sanded down. <span class="hl">6L3 Brasi</span> runs on gasoline and bad decisions. <span class="hl">7asis Eni</span> is a gas canister about to go off. <span class="hl">Meen Had</span> closes its jaws slow, like the flytrap on the cover. <span class="hl">El 3alam El A7mar</span> burns the whole thing down.</p>
-      <p class="edit-note">— edit this bio however you and the band want it to read —</p>
+      <button type="button" class="lang-toggle" id="aboutLangToggle" data-lang="en">عربي</button>
+      <div id="aboutTextEn" class="about-text">
+        <p>Sokaj started the way most things that matter start in Amman—loud, late, and out of a bedroom, not a studio. The sound is rough on purpose: distorted guitars, street Arabic, and lyrics overheard through open windows in Jabal El Weibdeh.</p>
+        <p>Four tracks deep, nothing's been sanded down. <span class="hl">6L3 Brasi</span> runs on gasoline and bad decisions. <span class="hl">7asis Eni</span> is a gas canister ready to blow. <span class="hl">Meen Had</span> closes its jaws slow—like the flytrap on the cover. <span class="hl">El 3alam El A7mar</span> burns the rest to the ground.</p>
+      </div>
+      <div id="aboutTextAr" class="about-text" dir="rtl" lang="ar" hidden>
+        <p>سوكاج بلشوا متل أي إشي إلو قيمة بعمان - بصوت عالي، بآخر الليل، ومن غرفة نوم مش استوديو. الصوت مقصود يكون خام ومش ملمع: جيتارات مشوهة، حكي شوارع، وكلمات بتلقطها من شبابيك مفتوحة بالويبدة.</p>
+        <p>أربع أغاني بدون أي مهادنة. <span class="hl">براسي</span> شغالة ع البنزين والقرارات العوجة. <span class="hl">حاسس إني</span> جرة غاز ع وشك تنفجر. <span class="hl">مين هاد</span> بتسكر فكّها على شوي شوي متل النبتة اللي ع الغلاف. و<span class="hl">العلم الأحمر</span> بتحرق الباقي كلو.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -93,8 +98,7 @@
 
 <!-- ===== MUSIC ===== -->
 <section class="music" id="music">
-  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>02</div>
-  <h2 class="section-head">MUSIC <span class="section-head-ar">الموسيقى</span></h2>
+  <h2 class="section-head">SOKAJ MUSIC <span class="section-head-ar">أغاني سوكاج</span></h2>
 
   <div class="track-list">
 
@@ -149,32 +153,64 @@
 
 <!-- ===== GALLERY ===== -->
 <section class="gallery" id="gallery">
-  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>03</div>
-  <h2 class="section-head">GALLERY <span class="section-head-ar">صور</span></h2>
+  <h2 class="section-head">CONCERTS GALLERY <span class="section-head-ar">كونسرت سوكاج</span></h2>
   <div class="concert-grid">
     <a href="concert-2025-06-26.html" class="concert-card">
-      <img src="assets/covers/6l3-brasi.jpg" alt="" class="concert-card-bg">
+      <img src="assets/concerts/2025-06-26/photo63.jpg" alt="" class="concert-card-bg">
       <div class="concert-card-overlay">
         <span class="concert-card-date">JUNE 26, 2025</span>
         <span class="concert-card-label">View Photos →</span>
       </div>
     </a>
     <a href="concert-2025-09-03.html" class="concert-card">
-      <img src="assets/covers/alalam-alahmar.jpg" alt="" class="concert-card-bg">
+      <img src="assets/concerts/2025-09-03/photo134.jpg" alt="" class="concert-card-bg">
       <div class="concert-card-overlay">
         <span class="concert-card-date">SEPTEMBER 3, 2025</span>
         <span class="concert-card-label">View Photos →</span>
       </div>
     </a>
   </div>
-  <p class="edit-note center">— swap the placeholder cover images for real concert photos, and drop the actual photo sets into each concert page —</p>
 </section>
 
 <div class="jag jag-2" aria-hidden="true"></div>
 
+<!-- ===== MEMBERS ===== -->
+<section class="members" id="members">
+  <h2 class="section-head">SOKAJIES <span class="section-head-ar">سوكاجيز</span></h2>
+
+  <div class="members-grid">
+    <a href="https://www.instagram.com/abuusalah_" target="_blank" rel="noopener" class="member-card">
+      <div class="member-photo"><img src="assets/members/abusalah.jpg" alt="Abusalah"></div>
+      <span class="member-name">Abusalah</span>
+      <span class="member-ig">@abuusalah_</span>
+    </a>
+    <a href="https://www.instagram.com/samerfarhan_" target="_blank" rel="noopener" class="member-card">
+      <div class="member-photo"><img src="assets/members/samer.jpg" alt="Samer"></div>
+      <span class="member-name">Samer</span>
+      <span class="member-ig">@samerfarhan_</span>
+    </a>
+    <a href="https://www.instagram.com/sadiovich" target="_blank" rel="noopener" class="member-card">
+      <div class="member-photo"><img src="assets/members/maan.jpg" alt="Maan"></div>
+      <span class="member-name">Maan</span>
+      <span class="member-ig">@sadiovich</span>
+    </a>
+    <a href="https://www.instagram.com/shaiwka3k" target="_blank" rel="noopener" class="member-card">
+      <div class="member-photo"><img src="assets/members/kareem.jpg" alt="Kareem"></div>
+      <span class="member-name">Kareem</span>
+      <span class="member-ig">@shaiwka3k</span>
+    </a>
+    <a href="https://www.instagram.com/agwanoo3" target="_blank" rel="noopener" class="member-card">
+      <div class="member-photo"><img src="assets/members/omar.jpg" alt="Omar"></div>
+      <span class="member-name">Omar</span>
+      <span class="member-ig">@agwanoo3</span>
+    </a>
+  </div>
+</section>
+
+<div class="jag jag-1" aria-hidden="true"></div>
+
 <!-- ===== MESSAGE ===== -->
 <section class="message" id="message">
-  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>04</div>
   <h2 class="section-head">DROP A MESSAGE <span class="section-head-ar">اترك رسالة</span></h2>
   <p class="message-sub">Send Sokaj something — only the band sees it.</p>
 
@@ -192,8 +228,7 @@
 
 <!-- ===== SOCIAL ===== -->
 <section class="social" id="social">
-  <div class="section-eyebrow"><span class="eyebrow-mark">⚡</span>05</div>
-  <h2 class="section-head">FOLLOW <span class="section-head-ar">تابعونا</span></h2>
+  <h2 class="section-head">FOLLOW SOKAJ <span class="section-head-ar">تابعوا سوكاج</span></h2>
   <div class="social-grid">
     <a href="https://www.instagram.com/sokajband/" class="social-link" target="_blank" rel="noopener">
       <span class="social-name">Instagram</span><span class="social-handle">@sokajband</span>
@@ -213,7 +248,7 @@
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <img src="assets/logo.png" alt="Sokaj" class="footer-logo">
-  <p class="footer-text">صنع بالحب لسوكاج — fan site, not official</p>
+  <p class="footer-text">fan site, not official</p>
   <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 </footer>
 
