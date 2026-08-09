@@ -49,6 +49,18 @@ if/when you want it (kept out of the default deploy per your constraint).
 None of this can be done from code or by an AI assistant with repo
 access. Checklist for you to run through directly:
 
+- [ ] **PRIORITY — confirm Firebase Authentication's built-in
+      brute-force/abuse protection is enabled** — console →
+      Authentication → Settings → look for the abuse/brute-force
+      protection toggle (naming varies by console version; may be
+      bundled under a broader "App Check enforcement for
+      Authentication" setting). This is the only real defense against
+      someone scripting rapid password guesses against
+      `sokajwiki@gmail.com` — the client-side lockout added to
+      `admin.js` (below) is bypassable and not a substitute for this.
+      Treat this as the single highest-priority item in this whole
+      document — until it's confirmed on, the admin login has no
+      real protection against brute-force at all.
 - [ ] Enable 2-Step Verification (2FA/MFA) on the Google account
       `sokajwiki@gmail.com` — myaccount.google.com → Security →
       2-Step Verification.
@@ -63,12 +75,17 @@ access. Checklist for you to run through directly:
       manager–generated, not reused anywhere else) — console →
       Authentication → Users → the `sokajwiki@gmail.com` user → reset,
       or via "forgot password" on the admin login page.
-- [ ] Confirm Firebase Authentication's built-in brute-force/abuse
-      protection is enabled — console → Authentication → Settings →
-      look for the abuse/brute-force protection toggle (naming varies
-      by console version; it may also be bundled under a broader
-      "App Check enforcement for Authentication" setting). Enable it if
-      it's off.
+
+**What's in the code now:** `admin.js` has a client-side login lockout —
+after 3 failed attempts it starts blocking further tries with
+exponential backoff (5s, 10s, 20s... capped at 5 minutes), tracked in
+localStorage. Same caveat as the message-form cooldown: this is **not a
+security control**. It's bypassed by clearing localStorage, a private
+window, or scripting `signInWithEmailAndPassword` directly instead of
+clicking the button. Its only purpose is to slow down casual/manual
+attempts and cut down on failed-login noise — it does nothing against a
+real scripted attacker. The platform-level check above is what actually
+matters.
 
 ## 3. Verifying deployed Firestore rules match the repo
 

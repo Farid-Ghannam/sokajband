@@ -31,12 +31,91 @@
   let allLoaded = false;
   let loadMoreBtn = null;
 
+  // --- Client-side login lockout ----------------------------------------
+  // NOT a security control — this runs entirely in the visitor's browser
+  // (localStorage-based) and is trivially bypassed by clearing storage,
+  // a private window, or scripting Firebase Auth directly. Its only
+  // purpose is to slow down casual/manual brute-force attempts and cut
+  // down on failed-login noise. The real defense against credential
+  // stuffing / brute force is Firebase Authentication's own built-in
+  // abuse protection — confirm that's enabled in the console (see
+  // SECURITY-NOTES.md, item 2). Do not treat this as sufficient on its
+  // own.
+  const LOCKOUT_KEY = 'sokaj_admin_login_state'; // { failCount, lockedUntil }
+  const BASE_LOCKOUT_MS = 5_000;   // 5s after 1st fail-streak lockout trigger
+  const MAX_LOCKOUT_MS = 5 * 60_000; // cap at 5 minutes
+  const FAILS_BEFORE_LOCKOUT = 3;  // allow a few tries before any delay
+
+  function getLockoutState() {
+    try {
+      return JSON.parse(localStorage.getItem(LOCKOUT_KEY)) || { failCount: 0, lockedUntil: 0 };
+    } catch {
+      return { failCount: 0, lockedUntil: 0 };
+    }
+  }
+
+  function setLockoutState(state) {
+    localStorage.setItem(LOCKOUT_KEY, JSON.stringify(state));
+  }
+
+  function remainingLockoutSeconds() {
+    const { lockedUntil } = getLockoutState();
+    return Math.max(0, Math.ceil((lockedUntil - Date.now()) / 1000));
+  }
+
+  function applyLockoutUI() {
+    const remaining = remainingLockoutSeconds();
+    if (remaining <= 0) {
+      loginBtn.disabled = false;
+      return;
+    }
+    loginBtn.disabled = true;
+    loginError.textContent = `Too many attempts — wait ${remaining}s.`;
+    setTimeout(() => {
+      if (remainingLockoutSeconds() <= 0) {
+        loginBtn.disabled = false;
+        loginError.textContent = '';
+      } else {
+        applyLockoutUI();
+      }
+    }, 1000);
+  }
+
+  function recordFailedAttempt() {
+    const state = getLockoutState();
+    state.failCount = (state.failCount || 0) + 1;
+    if (state.failCount >= FAILS_BEFORE_LOCKOUT) {
+      // Exponential backoff per extra fail past the threshold, capped.
+      const extra = state.failCount - FAILS_BEFORE_LOCKOUT;
+      const delay = Math.min(BASE_LOCKOUT_MS * Math.pow(2, extra), MAX_LOCKOUT_MS);
+      state.lockedUntil = Date.now() + delay;
+    }
+    setLockoutState(state);
+  }
+
+  function recordSuccessfulLogin() {
+    setLockoutState({ failCount: 0, lockedUntil: 0 });
+  }
+
+  // Restore lockout UI on page load (e.g. visitor refreshed mid-lockout).
+  applyLockoutUI();
+
   loginBtn.addEventListener('click', async () => {
+    if (remainingLockoutSeconds() > 0) {
+      applyLockoutUI();
+      return;
+    }
     loginError.textContent = '';
     try {
       await auth.signInWithEmailAndPassword(emailInput.value.trim(), passwordInput.value);
+      recordSuccessfulLogin();
     } catch (err) {
-      loginError.textContent = 'Wrong email or password.';
+      recordFailedAttempt();
+      if (remainingLockoutSeconds() > 0) {
+        applyLockoutUI();
+      } else {
+        loginError.textContent = 'Wrong email or password.';
+      }
     }
   });
 
