@@ -29,10 +29,13 @@
 
     // shrink + fade the hero logo as it scrolls past, so it visually
     // hands off to the small nav logo that fades in via CSS
-    const heroH = hero.offsetHeight || 1;
-    const progress = Math.min(Math.max(window.scrollY / (heroH * 0.6), 0), 1);
-    heroLogo.style.transform = `scale(${1 - progress * 0.35}) translateY(${progress * -30}px)`;
-    heroLogo.style.opacity = `${1 - progress}`;
+    // (guarded: sub-pages like concert galleries / credits have no hero)
+    if (hero && heroLogo) {
+      const heroH = hero.offsetHeight || 1;
+      const progress = Math.min(Math.max(window.scrollY / (heroH * 0.6), 0), 1);
+      heroLogo.style.transform = `scale(${1 - progress * 0.35}) translateY(${progress * -30}px)`;
+      heroLogo.style.opacity = `${1 - progress}`;
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -65,13 +68,13 @@
   const bgLayers = [$('#bgA'), $('#bgB')];
   let activeLayer = 0;
   const audioEl = $('#themeAudio');
-  const muteBtn = $('#muteBtn');
+  const playPauseBtn = $('#playPauseBtn');
   const themeToggle = $('#themeToggle');
   const themeToggleCurrent = $('#themeToggleCurrent');
   const themeMenu = $('#themeMenu');
 
   let currentSong = null;
-  let userHasInteracted = false; // autoplay must start muted until a gesture
+  let userHasInteracted = false; // real playback only ever starts from a gesture
 
   function setBackground(coverUrl) {
     const next = bgLayers[1 - activeLayer];
@@ -88,12 +91,23 @@
     $$('#themeMenu li').forEach(li => li.setAttribute('aria-selected', String(li.dataset.song === key)));
   }
 
-  function syncMuteUI() {
-    muteBtn.setAttribute('aria-pressed', String(!audioEl.muted));
-    muteBtn.setAttribute('aria-label', audioEl.muted ? 'Unmute theme song' : 'Mute theme song');
+  function syncPlayPauseUI() {
+    const isPlaying = !audioEl.paused;
+    playPauseBtn.setAttribute('aria-pressed', String(isPlaying));
+    playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause theme song' : 'Play theme song');
   }
 
-  function selectSong(key, { attemptPlay = true } = {}) {
+  // persist playback state so it can carry over to other pages
+  // (about-me.html, concert galleries) and across reloads.
+  function persistAudioState() {
+    try {
+      localStorage.setItem('sokajAudioSrc', audioEl.currentSrc || audioEl.src);
+      localStorage.setItem('sokajAudioTime', String(audioEl.currentTime || 0));
+      localStorage.setItem('sokajAudioPlaying', String(!audioEl.paused && userHasInteracted));
+    } catch (e) {}
+  }
+
+  function selectSong(key, { attemptPlay = true, resumeTime = 0 } = {}) {
     if (!SONGS[key]) return;
     currentSong = key;
     setBackground(SONGS[key].cover);
@@ -102,18 +116,39 @@
     try { localStorage.setItem('sokajThemeSong', key); } catch (e) {}
 
     audioEl.src = SONGS[key].audio;
-    audioEl.muted = !userHasInteracted;
-    syncMuteUI();
+
+    if (resumeTime > 0) {
+      const setTime = () => {
+        audioEl.currentTime = resumeTime;
+        audioEl.removeEventListener('loadedmetadata', setTime);
+      };
+      audioEl.addEventListener('loadedmetadata', setTime);
+    }
 
     if (attemptPlay) {
+      // Browsers block autoplay-with-sound on every fresh page load,
+      // even if the user already unmuted audio on a previous page —
+      // that "unlock" doesn't carry over across navigations. Starting
+      // muted is always allowed, so we do that, then unmute the
+      // instant playback actually begins.
+      const shouldUnmuteAfter = userHasInteracted && !audioEl.muted;
+      if (shouldUnmuteAfter) audioEl.muted = true;
+
       const p = audioEl.play();
-      if (p && p.catch) {
-        // Swallow errors: file missing (not uploaded yet) or autoplay
-        // blocked — either way the UI stays correct and silent.
-        p.catch(() => {});
+      if (p && p.then) {
+        p.then(() => {
+          if (shouldUnmuteAfter) audioEl.muted = false;
+        }).catch(() => {});
       }
     }
+    persistAudioState();
+    syncPlayPauseUI();
   }
+
+  audioEl.addEventListener('play', () => { persistAudioState(); syncPlayPauseUI(); });
+  audioEl.addEventListener('pause', () => { persistAudioState(); syncPlayPauseUI(); });
+  setInterval(persistAudioState, 2000);
+  window.addEventListener('pagehide', persistAudioState);
 
   // dropdown open/close
   function setThemeMenu(open) {
@@ -140,51 +175,77 @@
     });
   });
 
-  // mute toggle — also doubles as the required "unmute on interaction" gesture
   function markInteracted() {
     if (userHasInteracted) return;
     userHasInteracted = true;
   }
-  muteBtn.addEventListener('click', () => {
+
+  // play/pause button — lightning bolt: whole + lit while playing,
+  // broken in half while paused
+  playPauseBtn.addEventListener('click', () => {
     markInteracted();
-    audioEl.muted = !audioEl.muted;
-    syncMuteUI();
-    if (!audioEl.muted && audioEl.paused) {
+    if (audioEl.paused) {
       const p = audioEl.play();
       if (p && p.catch) p.catch(() => {});
+    } else {
+      audioEl.pause();
     }
   });
 
-  /* ---- boot: load default song muted (autoplay-safe) -------------- */
+  /* ---- boot: never autoplay on a fresh visit ----------------------
+     Only resume automatically if the user had already started
+     playback earlier (this session or a previous visit/page).
+  --------------------------------------------------------------------*/
   let bootSong = DEFAULT_SONG;
+  let resumeTime = 0;
+  let wasPlaying = false;
   try {
-    const saved = localStorage.getItem('sokajThemeSong');
-    if (saved && SONGS[saved]) bootSong = saved;
+    const savedSong = localStorage.getItem('sokajThemeSong');
+    if (savedSong && SONGS[savedSong]) bootSong = savedSong;
+    resumeTime = parseFloat(localStorage.getItem('sokajAudioTime') || '0') || 0;
+    wasPlaying = localStorage.getItem('sokajAudioPlaying') === 'true';
   } catch (e) {}
-  selectSong(bootSong, { attemptPlay: true });
-  muteBtn.setAttribute('aria-pressed', 'false');
+
+  if (wasPlaying) userHasInteracted = true;
+
+  selectSong(bootSong, {
+    attemptPlay: wasPlaying,
+    resumeTime: resumeTime, // preserve position whether it was playing or paused
+  });
 
 })();
 
-/* ---- about section language toggle -------------------------------- */
+/* ---- site-wide language toggle -------------------------------- */
 (() => {
   const btn = document.getElementById('aboutLangToggle');
   const en = document.getElementById('aboutTextEn');
   const ar = document.getElementById('aboutTextAr');
+  const messageSub = document.getElementById('messageSub');
   if (!btn || !en || !ar) return;
 
-  btn.addEventListener('click', () => {
-    const showingEn = btn.dataset.lang === 'en';
-    if (showingEn) {
-      en.hidden = true;
-      ar.hidden = false;
-      btn.dataset.lang = 'ar';
-      btn.textContent = 'English';
-    } else {
-      en.hidden = false;
-      ar.hidden = true;
-      btn.dataset.lang = 'en';
-      btn.textContent = 'عربي';
+  function applyLang(lang) {
+    const isAr = lang === 'ar';
+    en.hidden = isAr;
+    ar.hidden = !isAr;
+    btn.dataset.lang = isAr ? 'ar' : 'en';
+    btn.textContent = isAr ? 'English' : 'عربي';
+
+    if (messageSub) {
+      messageSub.textContent = isAr ? messageSub.dataset.ar : messageSub.dataset.en;
+      messageSub.lang = isAr ? 'ar' : 'en';
     }
+
+    try { localStorage.setItem('sokajLang', isAr ? 'ar' : 'en'); } catch (e) {}
+  }
+
+  btn.addEventListener('click', () => {
+    applyLang(btn.dataset.lang === 'en' ? 'ar' : 'en');
   });
+
+  let savedLang = 'en';
+  try {
+    const saved = localStorage.getItem('sokajLang');
+    if (saved === 'ar' || saved === 'en') savedLang = saved;
+  } catch (e) {}
+  applyLang(savedLang);
 })();

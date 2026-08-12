@@ -157,7 +157,7 @@ li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/ala
 .tm-title{font-size:.82rem;font-weight:700;}
 .tm-sub{font-family:var(--f-arabic);font-size:.72rem;color:var(--ash);}
 
-.mute-btn{
+.play-pause-btn{
   width:38px;height:38px;flex:0 0 auto;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(242,237,226,.18);
@@ -165,10 +165,13 @@ li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/ala
   display:flex;align-items:center;justify-content:center;
   clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);
 }
-.mute-btn:hover{border-color:var(--red);color:var(--bone);}
-.icon-vol{display:none;}
-.mute-btn[aria-pressed="false"] .icon-vol-off{display:block;}
-.mute-btn[aria-pressed="true"] .icon-vol-on{display:block;color:var(--red);}
+.play-pause-btn:hover{border-color:var(--red);color:var(--bone);}
+.icon-bolt{display:none;}
+.play-pause-btn[aria-pressed="false"] .icon-bolt-off{display:block;}
+.play-pause-btn[aria-pressed="true"] .icon-bolt-on{
+  display:block;color:var(--red);
+  filter:drop-shadow(0 0 5px rgba(229,57,53,.65));
+}
 
 /* =========================================================
    slide menu
@@ -240,9 +243,8 @@ li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/ala
   animation:heroLogoRise 1.1s cubic-bezier(.16,.9,.3,1) .15s forwards;
 }
 .hero-tag{
-  margin:0;
   font-family:var(--f-arabic);font-weight:900;
-  font-size:clamp(.85rem,2vw,1.15rem);
+  font-size:clamp(.7rem,1.4vw,.85rem);
   color:var(--bone);
   display:flex;flex-direction:column;gap:2px;
   letter-spacing:.02em;
@@ -446,7 +448,23 @@ section{padding:90px 22px;max-width:1180px;margin:0 auto;position:relative;}
   position:relative;
 }
 .footer-logo{height:26px;opacity:.8;}
+.footer-links{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:18px;
+  font-family:var(--f-body);font-size:.82rem;
+}
+.footer-links a{color:var(--ash);text-decoration:none;transition:color .2s ease;}
+.footer-links a:hover{color:var(--red);}
+.footer-socials{display:flex;gap:14px;}
+.footer-socials a{
+  color:var(--ash);display:flex;align-items:center;justify-content:center;
+  transition:color .2s ease,transform .2s ease;
+}
+.footer-socials a:hover{color:var(--red);transform:translateY(-2px);}
 .footer-text{font-family:var(--f-arabic);font-size:.85rem;color:var(--ash);}
+.footer-credit{font-family:var(--f-body);font-size:.78rem;color:var(--ash);}
+.footer-credit a{color:var(--bone);text-decoration:none;transition:color .2s ease;}
+.footer-credit a:hover{color:var(--red);}
+.footer-copyright{font-family:var(--f-body);font-size:.72rem;color:rgba(138,133,124,.6);}
 .back-top{
   position:absolute;right:22px;top:50%;transform:translateY(-50%);
   width:40px;height:40px;
