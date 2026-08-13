@@ -54,12 +54,14 @@ button{font-family:inherit;cursor:pointer;}
 .bg-layer.is-active{opacity:1;}
 .bg-scrim{
   position:fixed;inset:0;z-index:2;
+  contain:paint;
   background:
     radial-gradient(120% 90% at 50% -10%, rgba(10,10,10,.2), rgba(10,10,10,.86) 60%),
     linear-gradient(180deg, rgba(10,10,10,.55), rgba(10,10,10,.92));
 }
 .bg-noise{
   position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.05;
+  contain:paint;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 /* wraps every non-background element so it reliably paints above the
