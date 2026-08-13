@@ -303,6 +303,11 @@ li[data-song="alalamalahmar"] .tm-swatch{background-image:url('assets/covers/ala
 .jag{
   height:46px;width:100%;
   background:var(--red);
+  position:relative;isolation:isolate;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  will-change:transform;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
 }
 .jag-1{clip-path:polygon(0 100%,3% 20%,7% 100%,11% 10%,15% 100%,19% 30%,23% 100%,28% 0,32% 100%,37% 25%,41% 100%,46% 15%,50% 100%,55% 35%,59% 100%,64% 5%,68% 100%,73% 28%,77% 100%,82% 18%,86% 100%,91% 22%,95% 100%,100% 12%,100% 100%,0 100%);}
 .jag-2{background:var(--black);clip-path:polygon(0 0,4% 85%,8% 0,13% 90%,17% 0,22% 80%,26% 0,31% 95%,35% 0,40% 75%,44% 0,49% 88%,53% 0,58% 70%,62% 0,67% 92%,71% 0,76% 82%,80% 0,85% 96%,89% 0,94% 78%,98% 0,100% 0,100% 0,0 0);height:30px;}
