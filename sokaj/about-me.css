@@ -1,4 +1,4 @@
-.credits-bg{position:fixed;inset:0;background:var(--black);z-index:0;}
+.credits-bg{position:fixed;inset:0;background:var(--black);z-index:3;}
 .credits-page{max-width:640px;margin:0 auto;padding:100px 24px 80px;}
 .credits-back{
   display:inline-flex;align-items:center;gap:10px;color:var(--bone);
