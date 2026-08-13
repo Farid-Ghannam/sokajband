@@ -41,6 +41,13 @@
   images.forEach((img, i) => {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => show(i));
+
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+      img.addEventListener('error', () => img.classList.add('is-loaded'), { once: true });
+    }
   });
 
   closeBtn.addEventListener('click', close);

@@ -249,3 +249,21 @@
   } catch (e) {}
   applyLang(savedLang);
 })();
+
+/* ---- no-flash image fade-in for lazy-loaded photos ---------------- */
+(() => {
+  const markLoaded = (img) => img.classList.add('is-loaded');
+
+  const imgs = document.querySelectorAll(
+    '.track-art img, .member-photo img, .concert-card-bg'
+  );
+
+  imgs.forEach((img) => {
+    if (img.complete && img.naturalWidth > 0) {
+      markLoaded(img);
+    } else {
+      img.addEventListener('load', () => markLoaded(img), { once: true });
+      img.addEventListener('error', () => markLoaded(img), { once: true });
+    }
+  });
+})();

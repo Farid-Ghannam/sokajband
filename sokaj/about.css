@@ -32,7 +32,7 @@
 .about-head .text-outline{
   font-family:var(--f-display-ar);
   letter-spacing:normal;
-  word-spacing:-0.15em;
+  word-spacing:0.05em;
   display:inline-block;
   transform:translateY(-0.15em);
 }
@@ -40,6 +40,11 @@
 .about-body p{
   font-size:1.05rem;line-height:1.75;color:#d9d4c8;
   margin:0 0 20px;
+}
+@media(max-width:859px){
+  .about-head{text-align:center;}
+  .about-body{display:flex;flex-direction:column;}
+  .lang-toggle{order:2;align-self:center;margin-top:24px;margin-bottom:0;}
 }
 .lang-toggle{
   display:inline-block;

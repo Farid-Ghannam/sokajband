@@ -18,14 +18,21 @@
 
   if (!wasPlaying || !src) return;
 
-  const audio = new Audio(src);
+  const audio = new Audio();
   audio.loop = true;
+  audio.preload = 'auto';
+  // set the resume point as early as possible so playback doesn't start
+  // from 0 for a beat while metadata is still loading
+  if (resumeTime > 0) {
+    try { audio.currentTime = resumeTime; } catch (e) {}
+  }
 
   const applyResumeTime = () => {
-    audio.currentTime = resumeTime;
+    if (resumeTime > 0) audio.currentTime = resumeTime;
     audio.removeEventListener('loadedmetadata', applyResumeTime);
   };
   audio.addEventListener('loadedmetadata', applyResumeTime);
+  audio.src = src;
 
   const p = audio.play();
   if (p && p.catch) p.catch(() => {});
@@ -38,6 +45,9 @@
   }
   audio.addEventListener('play', persist);
   audio.addEventListener('pause', persist);
-  setInterval(persist, 2000);
+  // 1s cadence (was 2s) — tighter resume precision on quick navigation,
+  // pagehide still covers the final gap on unload
+  setInterval(persist, 1000);
   window.addEventListener('pagehide', persist);
+  window.addEventListener('beforeunload', persist);
 })();
