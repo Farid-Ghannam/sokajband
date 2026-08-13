@@ -88,6 +88,11 @@
     const next = bgLayers[1 - activeLayer];
     const prev = bgLayers[activeLayer];
     next.style.backgroundImage = `url('${coverUrl}')`;
+    // force a reflow before toggling classes — on some mobile browsers
+    // (older Android WebViews especially) a background-image change and
+    // a class-driven opacity transition landing in the same frame can
+    // get coalesced/dropped, leaving the layer stuck on its old paint.
+    void next.offsetHeight;
     next.classList.add('is-active');
     prev.classList.remove('is-active');
     activeLayer = 1 - activeLayer;

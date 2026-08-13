@@ -44,7 +44,9 @@ button{font-family:inherit;cursor:pointer;}
   position:fixed;inset:0;
   background-size:cover;background-position:center;
   filter:blur(3px) saturate(1.15) brightness(.75);
-  transform:scale(1.15);
+  transform:translateZ(0) scale(1.15);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  will-change:opacity;
   opacity:0;
   transition:opacity 1.1s ease;
   z-index:-3;
