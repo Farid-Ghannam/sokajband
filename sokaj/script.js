@@ -75,6 +75,14 @@
 
   let currentSong = null;
   let userHasInteracted = false; // real playback only ever starts from a gesture
+  let pendingResumeTime = 0; // resume position not yet guaranteed to be applied
+
+  // iOS Safari (and all iOS browsers — they're WebKit under the hood)
+  // requires a real user gesture on *this* page load before unmuted
+  // audio.play() is allowed. Used to decide whether to show the
+  // tap-to-resume pill after a blocked boot autoplay attempt.
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS 13+
 
   function setBackground(coverUrl) {
     const next = bgLayers[1 - activeLayer];
@@ -107,6 +115,13 @@
     } catch (e) {}
   }
 
+  function applyPendingResumeTime(audio) {
+    if (pendingResumeTime > 0) {
+      try { audio.currentTime = pendingResumeTime; } catch (e) {}
+      pendingResumeTime = 0;
+    }
+  }
+
   function selectSong(key, { attemptPlay = true, resumeTime = 0 } = {}) {
     if (!SONGS[key]) return;
     currentSong = key;
@@ -116,10 +131,13 @@
     try { localStorage.setItem('sokajThemeSong', key); } catch (e) {}
 
     audioEl.src = SONGS[key].audio;
+    pendingResumeTime = resumeTime;
 
     if (resumeTime > 0) {
       const setTime = () => {
-        audioEl.currentTime = resumeTime;
+        // only seek if nothing has consumed/overridden it since (e.g.
+        // the play/pause button already applied + cleared it)
+        if (pendingResumeTime > 0) applyPendingResumeTime(audioEl);
         audioEl.removeEventListener('loadedmetadata', setTime);
       };
       audioEl.addEventListener('loadedmetadata', setTime);
@@ -138,11 +156,53 @@
       if (p && p.then) {
         p.then(() => {
           if (shouldUnmuteAfter) audioEl.muted = false;
-        }).catch(() => {});
+          // iOS sometimes resolves play() but silently keeps it muted/
+          // paused without a fresh gesture — verify shortly after.
+          if (isIOS) {
+            setTimeout(() => {
+              if (audioEl.paused || audioEl.muted) showResumePill();
+            }, 300);
+          }
+        }).catch(() => {
+          if (isIOS) showResumePill();
+        });
       }
     }
     persistAudioState();
     syncPlayPauseUI();
+  }
+
+  function showResumePill() {
+    if (document.getElementById('audioResumePill')) return;
+    const pill = document.createElement('button');
+    pill.id = 'audioResumePill';
+    pill.type = 'button';
+    pill.textContent = '🔊 Resume music';
+    pill.setAttribute('aria-label', 'Resume theme song');
+    Object.assign(pill.style, {
+      position: 'fixed',
+      bottom: 'calc(18px + env(safe-area-inset-bottom, 0px))',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      zIndex: '9999',
+      padding: '10px 18px',
+      borderRadius: '999px',
+      border: '1px solid rgba(242,237,226,.3)',
+      background: 'rgba(10,10,10,.75)',
+      color: '#f2ede2',
+      fontFamily: "'Archivo', sans-serif",
+      fontSize: '.85rem',
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)',
+      cursor: 'pointer'
+    });
+    // route through the exact same code path as the play/pause button,
+    // so the two controls are never out of sync with each other
+    pill.addEventListener('click', () => {
+      pill.remove();
+      playPauseBtn.click();
+    }, { once: true });
+    document.body.appendChild(pill);
   }
 
   audioEl.addEventListener('play', () => { persistAudioState(); syncPlayPauseUI(); });
@@ -185,6 +245,12 @@
   playPauseBtn.addEventListener('click', () => {
     markInteracted();
     if (audioEl.paused) {
+      // if a resume position never got applied (blocked autoplay meant
+      // this is the first real play attempt), apply it now, once, right
+      // before playing — never after, so it can't yank the position
+      // after playback has already audibly started.
+      applyPendingResumeTime(audioEl);
+      audioEl.muted = false;
       const p = audioEl.play();
       if (p && p.catch) p.catch(() => {});
     } else {
