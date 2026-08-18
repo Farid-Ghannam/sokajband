@@ -7,6 +7,13 @@
   // not a script hitting Firestore directly. Required since App Check
   // enforcement is turned on for Cloud Firestore in the Firebase console —
   // without this, every request (including logged-in reads) gets rejected.
+  //
+  // Local testing: reCAPTCHA v3 site keys are tied to registered domains, so
+  // this can't pass a real challenge on localhost/127.0.0.1. Gate a debug
+  // token to local hostnames only (no-op in production).
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+  }
   if (RECAPTCHA_V3_SITE_KEY && !RECAPTCHA_V3_SITE_KEY.startsWith('PASTE_')) {
     firebase.appCheck().activate(RECAPTCHA_V3_SITE_KEY, true);
   }

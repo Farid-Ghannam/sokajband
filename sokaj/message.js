@@ -5,9 +5,17 @@
 
   // App Check — proves this write is coming from the real site, not a script
   // hitting Firestore directly. Runs invisibly, no user interaction needed.
-  // For local testing on localhost, Firebase auto-enables debug token support —
-  // check the browser console for a debug token to register in the Firebase
-  // console (App Check → manage debug tokens) the first time you test locally.
+  //
+  // NOTE: reCAPTCHA v3 site keys are tied to registered domains, so App Check
+  // can't verify a real reCAPTCHA challenge on localhost/127.0.0.1 anyway.
+  // Firebase does NOT auto-enable debug mode there — you must explicitly set
+  // this flag *before* activate() runs. It's gated to local hostnames only,
+  // so it's a no-op (and never sent) in production.
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    // First run on a fresh browser: check the console for a generated debug
+    // token and add it in Firebase console → App Check → manage debug tokens.
+  }
   if (RECAPTCHA_V3_SITE_KEY && !RECAPTCHA_V3_SITE_KEY.startsWith('PASTE_')) {
     firebase.appCheck().activate(RECAPTCHA_V3_SITE_KEY, true);
   }
