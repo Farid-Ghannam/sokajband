@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOKAJ — September 3, 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="concert.css">
+<link rel="stylesheet" href="lightbox.css">
+<link rel="stylesheet" href="subpage-nav.css">
+</head>
+<body class="is-subpage">
+
+<!-- backdrop layers for theme-song mood system -->
+<div class="bg-layer" id="bgA"></div>
+<div class="bg-layer" id="bgB"></div>
+<div class="bg-scrim"></div>
+<div class="bg-noise"></div>
+
+<!-- ===== NAV ===== -->
+<header class="site-nav scrolled" id="siteNav">
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a href="index.html" class="nav-logo-link" aria-label="Sokaj home">
+    <img src="assets/logo.png" alt="Sokaj" class="nav-logo" id="navLogo">
+  </a>
+
+  <div class="theme-picker">
+    <button class="theme-toggle" id="themeToggle" aria-haspopup="listbox" aria-expanded="false">
+      <span class="theme-toggle-label">Pick a theme song</span>
+      <span class="theme-toggle-current" id="themeToggleCurrent">6L3 Brasi</span>
+      <svg class="theme-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+    </button>
+    <ul class="theme-menu" id="themeMenu" role="listbox">
+      <li role="option" data-song="6l3brasi"><span class="tm-swatch"></span><span class="tm-text"><span class="tm-title">6L3 Brasi</span><span class="tm-sub">طلع براسي</span></span></li>
+      <li role="option" data-song="7asiseni"><span class="tm-swatch"></span><span class="tm-text"><span class="tm-title">7asis Eni</span><span class="tm-sub">حاسس إني</span></span></li>
+      <li role="option" data-song="meenhad"><span class="tm-swatch"></span><span class="tm-text"><span class="tm-title">Meen Had</span><span class="tm-sub">مين هاد</span></span></li>
+      <li role="option" data-song="alalamalahmar"><span class="tm-swatch"></span><span class="tm-text"><span class="tm-title">El 3alam El A7mar</span><span class="tm-sub">العلم الأحمر</span></span></li>
+    </ul>
+  </div>
+
+  <button class="play-pause-btn" id="playPauseBtn" aria-label="Play theme song" aria-pressed="false">
+    <svg class="icon-bolt icon-bolt-off" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <polygon points="13 2 3 14 12 14 12 10" fill="currentColor" transform="translate(-1.1,-1.1)"/>
+      <polygon points="12 14 11 22 21 10 12 10" fill="currentColor" transform="translate(1.1,1.1)"/>
+    </svg>
+    <svg class="icon-bolt icon-bolt-on" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"/>
+    </svg>
+  </button>
+</header>
+
+<!-- ===== SLIDE MENU ===== -->
+<nav class="slide-menu" id="navMenu">
+  <button class="menu-close" id="menuClose" aria-label="Close menu">
+    <span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="index.html#about" class="menu-link"><span class="ml-num">01</span>About</a></li>
+    <li><a href="index.html#music" class="menu-link"><span class="ml-num">02</span>Music</a></li>
+    <li><a href="index.html#gallery" class="menu-link"><span class="ml-num">03</span>Gallery</a></li>
+    <li><a href="index.html#members" class="menu-link"><span class="ml-num">04</span>Band</a></li>
+    <li><a href="index.html#message" class="menu-link"><span class="ml-num">05</span>Message</a></li>
+    <li><a href="index.html#social" class="menu-link"><span class="ml-num">06</span>Social</a></li>
+    <li><a href="about-me.html" class="menu-link"><span class="ml-num">07</span>Credits</a></li>
+  </ul>
+</nav>
+<div class="menu-scrim" id="menuScrim"></div>
+
+<div class="concert-bg-scrim"></div>
+
+<main class="concert-page">
+  <a href="index.html#gallery" class="concert-back">← Back to Gallery</a>
+  <h1 class="concert-title">Live</h1>
+  <p class="concert-date">SEPTEMBER 3, 2025</p>
+
+  <div class="concert-photo-grid" id="photoGrid">
+        <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo01.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo02.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo03.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo04.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo05.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo06.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo07.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo08.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo09.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo10.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo100.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo101.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo102.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo103.webp" width="1064" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo104.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo105.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo106.webp" width="1064" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo107.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo108.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo109.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo11.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo110.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo111.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo112.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo113.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo114.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo115.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo116.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo117.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo118.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo119.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo12.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo120.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo121.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo122.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo123.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo124.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo125.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo126.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo127.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo128.webp" width="1064" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo129.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo13.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo130.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo131.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo132.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo133.webp" width="1600" height="900" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo134.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo135.webp" width="1600" height="1064" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo14.webp" width="1280" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo15.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo16.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo17.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo18.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo19.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo20.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo21.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo22.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo23.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo24.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo25.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo26.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo27.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo28.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo29.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo30.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo31.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo32.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo33.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo34.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo35.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo36.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo37.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo38.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo39.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo40.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo41.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo42.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo43.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo44.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo45.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo46.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo47.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo48.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo49.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo50.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo51.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo52.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo53.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo54.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo55.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo56.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo57.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo58.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo59.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo60.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo61.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo62.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo63.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo64.webp" width="1067" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo65.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo66.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo67.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo68.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo69.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo70.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo71.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo72.webp" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo73.webp" width="1064" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo74.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo75.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo76.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo77.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo78.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo79.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo80.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo81.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo82.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo83.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo84.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo85.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo86.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo87.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo88.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo89.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo90.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo91.webp" width="1064" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo92.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo93.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo94.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo95.webp" width="1065" height="1600" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo96.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo97.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo98.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+    <div class="concert-photo-placeholder"><img src="assets/concerts/2025-09-03/photo99.webp" width="1600" height="1065" alt="" loading="lazy" decoding="async"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <img src="assets/logo.png" alt="Sokaj" class="footer-logo">
+
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/sokajband/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+    </a>
+    <a href="https://open.spotify.com/artist/2fde0ZXHMnbC58zJ09ulee?si=zpotVxHUR3iXukxQq9nRjw" target="_blank" rel="noopener" aria-label="Spotify">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M7 10.5c3-.7 7-.4 9.5 1M7.3 13.4c2.5-.5 5.7-.3 7.9.9M7.6 16.1c2-.4 4.6-.2 6.3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </a>
+    <a href="https://youtube.com/@sokajband?si=pBi7SnQ5PyYfPfBk" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="6" width="19" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5L15 12l-4.5 2.5v-5z" fill="currentColor"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@sokajband?_r=1&_t=ZT-98gXWx6yPnh" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 3v10.5a3 3 0 1 1-2-2.83V8.6a5 5 0 1 0 5 5V8.8a6 6 0 0 0 3-1V5.5a4 4 0 0 1-3-1.2A4 4 0 0 1 16 3h-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <p class="footer-text">fan site, not official</p>
+  <p class="footer-copyright">© 2026 Sokaj</p>
+  <p class="footer-copyright">Site design © 2026 saayuiii</p>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+</footer>
+
+<audio id="themeAudio" preload="none" loop></audio>
+
+<script src="lightbox.js"></script>
+<script src="script.js?v=3"></script>
+</body>
+</html>

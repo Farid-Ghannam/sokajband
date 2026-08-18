@@ -1,0 +1,9 @@
+/* keep the full site-nav permanently in its "scrolled" visual state
+   on sub-pages (no hero to scroll past, so it should just always look
+   settled/opaque with the logo visible). */
+body.is-subpage .site-nav{
+  background:rgba(10,10,10,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(232,22,31,.25);
+}
+body.is-subpage .nav-logo{opacity:1;transform:none;}
