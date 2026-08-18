@@ -202,7 +202,7 @@
       applyPendingResumeTime(audioEl);
     });
 
-    if (attemptPlay) {
+    function beginPlayback() {
       // Browsers block autoplay-with-sound on every fresh page load,
       // even if the user already unmuted audio on a previous page —
       // that "unlock" doesn't carry over across navigations. Starting
@@ -240,6 +240,30 @@
           if (myToken !== playToken) return;
           if (isIOS) showResumePill();
         });
+      }
+    }
+
+    if (attemptPlay) {
+      if (resumeTime > 0) {
+        // Don't call play() until the resume seek has actually landed.
+        // Firing play() immediately and applying the seek later (from
+        // the loadedmetadata listener above) is a race: on a file that
+        // takes a little longer to reach playable state, the browser
+        // can start rendering audible samples from 0:00 before the
+        // seek lands, so playback briefly starts from the beginning
+        // (or the wrong point) before jumping — even though the label
+        // already shows the correct song. Waiting for 'seeked' (which
+        // only fires once currentTime has actually been applied)
+        // closes that window regardless of file size or buffering
+        // speed.
+        const onSeeked = function() {
+          audioEl.removeEventListener('seeked', onSeeked);
+          if (myToken !== playToken) return; // superseded since
+          beginPlayback();
+        };
+        audioEl.addEventListener('seeked', onSeeked);
+      } else {
+        beginPlayback();
       }
     }
     persistAudioState();
