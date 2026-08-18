@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sokaj — Messages (Admin)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="admin.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+  <h1>SOKAJ — Messages</h1>
+
+  <div id="loginBox">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Sign in</button>
+    <p id="loginError"></p>
+  </div>
+
+  <div id="appBox">
+    <div class="top-row">
+      <span id="countLabel"></span>
+      <button id="signOut">Sign out</button>
+    </div>
+    <div id="messagesList"></div>
+    <p id="empty">No messages yet.</p>
+  </div>
+</div>
+
+<script nonce="sokajAppCheckNonce2026" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script nonce="sokajAppCheckNonce2026" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
+<script nonce="sokajAppCheckNonce2026" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script nonce="sokajAppCheckNonce2026" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script nonce="sokajAppCheckNonce2026" src="firebase-config.js"></script>
+<script nonce="sokajAppCheckNonce2026" src="admin.js"></script>
+</body>
+</html>
