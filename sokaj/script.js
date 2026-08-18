@@ -121,21 +121,22 @@
   // persist playback state so it can carry over to other pages
   // (about-me.html, concert galleries) and across reloads.
   function persistAudioState() {
-    // While a resume seek is still pending (selectSong was asked to resume
-    // at some position, but the loadedmetadata listener hasn't applied it
-    // yet), audioEl.currentTime is still 0 — it hasn't caught up to the
-    // real position. persistAudioState() gets called synchronously right
-    // after play() starts (here, and via the 'play' event listener below),
-    // which is exactly that window. Writing 0 here would silently clobber
-    // the correct saved position in localStorage; if the user navigates to
-    // the next page before the seek lands and a later, accurate write
-    // happens, that next page boots from the stale 0 — the song plays but
-    // starts over, unpredictably, depending purely on navigation timing.
-    // Skip the write entirely until the pending seek has actually applied.
-    if (pendingResumeTime > 0) return;
     try {
       localStorage.setItem('sokajAudioSrc', audioEl.currentSrc || audioEl.src);
-      localStorage.setItem('sokajAudioTime', String(audioEl.currentTime || 0));
+      // audioEl.currentTime reads 0 until a pending resume seek actually
+      // lands (loadedmetadata fired) — and for a song that was *paused*
+      // (not playing) when saved, preload="none" means no load is even
+      // triggered until the user presses play, so that could be a long
+      // time, or never, on this page. Blocking the write entirely until
+      // then (an earlier attempt at this fix) silently blocks pagehide
+      // too, so nothing ever gets saved for that navigation and a stale
+      // older value — often 0, from whenever the song was first picked —
+      // is what the next page inherits instead. Persisting the already-
+      // known target position in the meantime fixes both: it's never
+      // wrong (it's exactly where we're resuming to), and it never
+      // blocks a write from happening.
+      const time = pendingResumeTime > 0 ? pendingResumeTime : (audioEl.currentTime || 0);
+      localStorage.setItem('sokajAudioTime', String(time));
       localStorage.setItem('sokajAudioPlaying', String(!audioEl.paused && userHasInteracted));
     } catch (e) {}
   }
