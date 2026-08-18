@@ -262,6 +262,16 @@
           beginPlayback();
         };
         audioEl.addEventListener('seeked', onSeeked);
+
+        // The <audio> elements are preload="none", so nothing is
+        // actually fetched — and loadedmetadata never fires — until
+        // something explicitly demands the resource. That used to be
+        // play(), called immediately, as a side effect. Now that
+        // play() is deliberately deferred until the seek lands, we
+        // have to kick off the fetch ourselves, or the whole chain
+        // (loadedmetadata -> seek -> 'seeked' -> beginPlayback) simply
+        // never starts and playback stays silently paused forever.
+        audioEl.load();
       } else {
         beginPlayback();
       }
