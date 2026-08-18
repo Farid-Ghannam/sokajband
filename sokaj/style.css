@@ -22,7 +22,6 @@
 html{scroll-behavior:smooth;background:var(--black);}
 body{
   margin:0;
-  background:var(--black);
   color:var(--bone);
   font-family:var(--f-body);
   overflow-x:hidden;
