@@ -34,8 +34,13 @@
   const COOLDOWN_KEY = 'sokaj_msg_last_submit';
 
   function msSinceLastSubmit() {
-    const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    let last = 0;
+    try { last = Number(localStorage.getItem(COOLDOWN_KEY) || 0); } catch (e) {}
     return Date.now() - last;
+  }
+
+  function recordSubmitTime() {
+    try { localStorage.setItem(COOLDOWN_KEY, String(Date.now())); } catch (e) {}
   }
 
   function remainingCooldownSeconds() {
@@ -82,7 +87,7 @@
       form.reset();
       statusEl.textContent = 'Sent — thanks!';
       statusEl.className = 'msg-status msg-status-ok';
-      localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+      recordSubmitTime();
       applyCooldownUI();
       return;
     }
@@ -105,7 +110,7 @@
       form.reset();
       statusEl.textContent = 'Sent — thanks!';
       statusEl.className = 'msg-status msg-status-ok';
-      localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+      recordSubmitTime();
     } catch (err) {
       console.error(err);
       statusEl.textContent = 'Something went wrong — try again.';

@@ -1,17 +1,3 @@
-/* Minimal header/footer for sub-pages (concert galleries, credits) —
-   no hamburger/theme-picker, just brand + way back home. */
-.subpage-nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  height:var(--nav-h);
-  display:flex;align-items:center;
-  padding:0 22px;
-  background:rgba(10,10,10,.86);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(232,22,31,.25);
-}
-.subpage-nav-logo-link{display:flex;align-items:center;}
-.subpage-nav-logo{height:34px;width:auto;}
-
 /* keep the full site-nav permanently in its "scrolled" visual state
    on sub-pages (no hero to scroll past, so it should just always look
    settled/opaque with the logo visible). */

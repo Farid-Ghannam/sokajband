@@ -55,7 +55,7 @@
   }
 
   function setLockoutState(state) {
-    localStorage.setItem(LOCKOUT_KEY, JSON.stringify(state));
+    try { localStorage.setItem(LOCKOUT_KEY, JSON.stringify(state)); } catch (e) {}
   }
 
   function remainingLockoutSeconds() {
