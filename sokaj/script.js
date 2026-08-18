@@ -121,6 +121,18 @@
   // persist playback state so it can carry over to other pages
   // (about-me.html, concert galleries) and across reloads.
   function persistAudioState() {
+    // While a resume seek is still pending (selectSong was asked to resume
+    // at some position, but the loadedmetadata listener hasn't applied it
+    // yet), audioEl.currentTime is still 0 — it hasn't caught up to the
+    // real position. persistAudioState() gets called synchronously right
+    // after play() starts (here, and via the 'play' event listener below),
+    // which is exactly that window. Writing 0 here would silently clobber
+    // the correct saved position in localStorage; if the user navigates to
+    // the next page before the seek lands and a later, accurate write
+    // happens, that next page boots from the stale 0 — the song plays but
+    // starts over, unpredictably, depending purely on navigation timing.
+    // Skip the write entirely until the pending seek has actually applied.
+    if (pendingResumeTime > 0) return;
     try {
       localStorage.setItem('sokajAudioSrc', audioEl.currentSrc || audioEl.src);
       localStorage.setItem('sokajAudioTime', String(audioEl.currentTime || 0));
